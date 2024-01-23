@@ -45,14 +45,13 @@ jobs:
 
     - name: Install dependencies
       run: |
-        if ([ "${{ runner.os }}" == "Linux" ];) then
+        if ($env:RUNNER_OS -eq "Linux") {
           sudo apt-get update
-          sudo apt-get install -y libvtk9-dev  # Adjust the package name based on your VTK version
-        fi
-        
-        if ([ "${{ matrix.os }}" == "windows-latest" ];) then
-          echo 1
-        fi
+          sudo apt-get install -y libvtk7-dev  # Adjust the package name based on your VTK version
+        }
+        elseif ($env:RUNNER_OS -eq "Windows") {
+          # Add Windows dependency installation commands here if needed
+        }
 
     - name: Configure CMake
       run: >
