@@ -47,7 +47,7 @@ jobs:
     - name: Download Artifact
       uses: actions/download-artifact@v2
       with:
-        name: build-artifact-ubuntu-latest
+        name: build-artifact-Linux 
         path: ${{ github.workspace }}/build
 
     - name: Set up GitHub Release
