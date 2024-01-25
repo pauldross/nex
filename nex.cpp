@@ -17,6 +17,7 @@
 
 #include <iostream>
 #include "depend/noiseEx.h"
+#include "depend/noiseEX_custom_parser.h"
 
 using namespace std;
 
@@ -26,13 +27,17 @@ int main(int argc, char **argv){
     string fileLoc = argv[1];
     double curr = stod(argv[2]);
     noiseEx n(fileLoc);
+    noiseEX_custom_parser nc(fileLoc);
 
 
-    cout << n.getMSFN(curr) << endl;
+    cout <<"VTK Parser " << n.getMSFN(curr) << endl;
 
-    cout << n.getArea() << endl;
+    cout << "VTK Parser " << n.getArea() << endl;
 //    n.debugDraw();
 //    cout << n.getArea();
+
+    cout << "custom parser " << nc.getMSFN(curr) << endl;
+    cout << "custom parser " << nc.getArea() << endl;
 
     return EXIT_SUCCESS;
 }
