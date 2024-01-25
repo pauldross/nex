@@ -55,7 +55,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ github.workspace }}/build/*
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN}}
           tag_name: v${{ github.run_number }}  # Specify a tag for the release
           name: "Release ${{ github.run_number }}"
           body: "Release created by GitHub Actions."
