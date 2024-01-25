@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest, fedora-latest]
 
-    # steps:
+    steps:
     # - name: Checkout Repository
     #   uses: actions/checkout@v2
       
