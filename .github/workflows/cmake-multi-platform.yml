@@ -17,8 +17,8 @@ jobs:
         os: [windows-latest, ubuntu-latest, fedora-latest]
 
     steps:
-    # - name: Checkout Repository
-    #   uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
       
     - name: download deps
       run: | 
