@@ -14,11 +14,11 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest, fedora-latest]
+        os: [windows-latest, ubuntu-latest, fedora-latest]
 
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+    # steps:
+    # - name: Checkout Repository
+    #   uses: actions/checkout@v2
       
     - name: download deps
       run: | 
