@@ -39,28 +39,3 @@ jobs:
       with:
         name: build-artifact-${{ runner.os }}
         path: ${{ github.workspace }}/build
-
-  release:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifact-Linux
-          path: ${{ github.workspace }}/build
-
-      - name: Set up GitHub Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ${{ github.workspace }}/build/*
-          token: ${{ secrets.GH_TOKEN}}
-          tag_name: v${{ github.run_number }}  # Specify a tag for the release
-          name: "Release ${{ github.run_number }}"
-          body: "Release created by GitHub Actions."
-
-      - name: Get Release URL
-        run: | 
-          echo "Release URL: ${{ steps.create_release.outputs.upload_url }}"
-
