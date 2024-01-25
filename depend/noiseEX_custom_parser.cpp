@@ -22,13 +22,13 @@
 #include <utility>
 //#include "../VTKParser/depend/VTKParser.h"
 
-noiseEX_custom_parser::noiseEX_custom_parser(string fileName) : parser(std::move(fileName)) {
+noiseEx::noiseEx(string fileName) : parser(std::move(fileName)) {
     parser.parse();
     this->_init();
     this->run();
 }
 
-void noiseEX_custom_parser::run() {
+void noiseEx::run() {
     int num_pts = parser.getNumPoints();
     for (int i = 0; i < num_pts; i++ ){
 //        make new cell for each point
@@ -109,7 +109,7 @@ void noiseEX_custom_parser::run() {
 }
 
 
-double noiseEX_custom_parser::getArea() {
+double noiseEx::getArea() {
     double sum = 0;
     for(const auto& c : Cells){
         sum += c->getArea();
@@ -117,7 +117,7 @@ double noiseEX_custom_parser::getArea() {
     return sum;
 }
 
-double noiseEX_custom_parser::getMSFN(double current) {
+double noiseEx::getMSFN(double current) {
     Point totB= {0,0,0};
     for (const auto& c : Cells){
         totB = totB + c->getB2A();
@@ -126,8 +126,8 @@ double noiseEX_custom_parser::getMSFN(double current) {
     return totB.x + totB.y + totB.z;
 }
 
-void noiseEX_custom_parser::_init() {
+void noiseEx::_init() {
 
 }
 
-noiseEX_custom_parser::~noiseEX_custom_parser() = default;
+noiseEx::~noiseEx() = default;

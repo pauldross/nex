@@ -12,16 +12,16 @@
 
 using namespace std;
 
-class noiseEX_custom_parser {
+class noiseEx {
     public:
         /**
          * Class constructor
          * @param fileName: String, the file path to the desired vtk file.
          */
 
-        explicit noiseEX_custom_parser(string fileName);
+        explicit noiseEx(string fileName);
 
-        ~noiseEX_custom_parser();
+        ~noiseEx();
 
         /**
          * Runs the algorithm
