@@ -42,7 +42,11 @@ jobs:
       shell: bash
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
-
+    - name: install deps
+      shell: bash
+      run: | 
+        git clone https://github.com/pauldross/VTKParser.git
+        echo pwd
     - name: Configure CMake
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
