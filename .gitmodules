@@ -1,0 +1,6 @@
+[submodule "depend/VTKParser"]
+	path = depend/VTKParser
+	url = https://github.com/pauldross/VTKParser.git
+[submodule "VTKParser"]
+	path = VTKParser
+	url = https://github.com/pauldross/VTKParser.git

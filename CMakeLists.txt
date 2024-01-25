@@ -42,6 +42,8 @@ add_executable(nex MACOSX_BUNDLE nex.cpp
         depend/Point.cpp
         depend/subCell.cpp
         depend/cell.cpp
+        VTKParser/depend/VTKParser.h
+        VTKParser/depend/VTKParser.cpp
 )
   target_link_libraries(nex PRIVATE ${VTK_LIBRARIES}
 )
