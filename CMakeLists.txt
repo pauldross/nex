@@ -15,6 +15,7 @@ add_executable(nex MACOSX_BUNDLE nex.cpp
         depend/subCell.cpp
         depend/cell.cpp
         VTKParser/depend/VTKParser.cpp  # Add the .cpp file, assuming it contains the implementation
+        depend/argparse.hpp
 )
 
 # Include the directories with header files

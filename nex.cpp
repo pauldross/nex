@@ -17,19 +17,43 @@
 
 #include <iostream>
 #include "depend/noiseEx.h"
+#include "depend/argparse.hpp"
 
 using namespace std;
 
 int main(int argc, char **argv){
 
     // for testing the algorithm without mesh quality:
-    string fileLoc = argv[1];
-    double curr = stod(argv[2]);
-    noiseEx n(fileLoc);
-    noiseEx nc(fileLoc);
+    argparse::ArgumentParser program("nex");
+
+    program.add_argument("path")
+        .required()
+        .help("The path to the VTK file that contains the B-field calculations. Data type must be unstructured grid!");
+
+    program.add_argument("current")
+        .required()
+        .help("The current flowing around the loop")
+        .scan<'g', double>();
+    program.add_description("A program for calculating the MSFN figure from simulation results obtained from InductEx.");
+
+    try {
+        program.parse_args(argc, argv);
+    }
+    catch (const std::exception& err) {
+        std::cerr << err.what() << std::endl;
+        std::cerr << program;
+        std::exit(1);
+    }
+    auto path = program.get<std::string>("path");
+    auto current = program.get<double>("current");
+
+//    string fileLoc = argv[1];
+//    double curr = stod(argv[2]);
+
+    noiseEx n(path);
 
 
-    cout << n.getMSFN(curr) << endl;
+    cout << n.getMSFN(current) << endl;
 
     cout << n.getArea() << endl;
 
