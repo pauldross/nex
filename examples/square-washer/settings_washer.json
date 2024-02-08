@@ -1,0 +1,57 @@
+{
+    "MATERIALS": {
+        "T0_ybcoCOND": {
+            "LAMBDA": 2.4E-7,
+            "SIGMA": 0
+        }
+    },
+    "MESHES": {
+        "IXMesh0": {
+            "FILE": "loop.msh",
+            "FORMAT": "GMSH",
+            "ENTITIES": {
+                "T0_ybco": {
+                    "MATERIAL": "T0_ybcoCOND"
+                },
+                "fone": { "HOLE": true }
+            }
+        },
+        "IXMeshField0": {
+            "FILE": "loopFIELD.msh",
+            "FORMAT": "GMSH",
+            "ENTITIES": ["FieldPlane0"]
+        }
+    },
+    "COMPONENTS": {
+        "fone": { "HOLE": "IXMesh0::fone" }
+    },
+    "OUTPUT": {
+        "PRINT": {
+            "CURRENT": {
+                "COMPONENTS": ["fone"],
+                "FILE": "i.txt"
+            }
+        },
+        "PLOT": {
+            "J": { "FILE": "J_washer.vtk" },
+            "B": {
+                "ENTITIES": ["IXMeshField0::FieldPlane0"],
+                "FILE": "loop_test.vtk"
+            }
+        }
+    },
+    "SETTINGS": {
+        "PATHS": { "LICENSE": "/usr/local/share/inductex/licenses/ix_license.txt" },
+        "SOLVER": {
+            "MAXITER": 400,
+            "TOL": 1.000E-4,
+            "ABSTOL": 1.000E-4,
+            "THREADS": "MAX"
+        },
+        "MODE": {
+            "TYPE": "MQS",
+            "ANALYSIS": "AC"
+        },
+        "FREQUENCY": 1E10
+    }
+}

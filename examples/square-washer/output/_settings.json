@@ -1,0 +1,127 @@
+{
+    "COMPONENTS": {
+        "fone": {
+            "HOLE": "IXMesh0::fone"
+        }
+    },
+    "MATERIALS": {
+        "T0_ybcoCOND": {
+            "LAMBDA": 2.4e-07,
+            "SIGMA": 0
+        }
+    },
+    "MESHES": {
+        "IXMesh0": {
+            "ENTITIES": {
+                "T0_ybco": {
+                    "MATERIAL": "T0_ybcoCOND"
+                },
+                "fone": {
+                    "HOLE": true
+                }
+            },
+            "FILE": "loop.msh",
+            "FORMAT": "GMSH"
+        },
+        "IXMeshField0": {
+            "ENTITIES": [
+                "FieldPlane0"
+            ],
+            "FILE": "loopFIELD.msh",
+            "FORMAT": "GMSH"
+        }
+    },
+    "OUTPUT": {
+        "PLOT": {
+            "B": {
+                "ENTITIES": [
+                    "IXMeshField0::FieldPlane0"
+                ],
+                "FILE": "loop_test.vtk"
+            },
+            "J": {
+                "FILE": "J_washer.vtk"
+            }
+        },
+        "PRINT": {
+            "CURRENT": {
+                "COMPONENTS": [
+                    "fone"
+                ],
+                "FILE": "i.txt"
+            }
+        }
+    },
+    "SETTINGS": {
+        "FMM": {
+            "ADAPTIVE": true,
+            "DEPTH": 6,
+            "MAXDEPTH": 10,
+            "NNBRS": 2,
+            "ORDER": 2,
+            "THREADS": "MAX"
+        },
+        "FREQUENCY": 10000000000.0,
+        "JUNCTION": {
+            "CS": 7e-14,
+            "DELV": 0.0001,
+            "IC*RN": 0.0016,
+            "JC": 0.0001,
+            "RSG/RN": 10.0,
+            "VG": 0.0028
+        },
+        "MODE": {
+            "ANALYSIS": "AC",
+            "TYPE": "MQS"
+        },
+        "PATHS": {
+            "LICENSE": "/usr/local/share/inductex/licenses/ix_license.txt",
+            "OUTPUT": "output"
+        },
+        "PRECONDITIONER": {
+            "CONDITIONNUMBER": true,
+            "ENABLED": true,
+            "EQUIL": false,
+            "FILLRATIO": 30,
+            "ILU_DROPRULE": [
+                "BASIC",
+                "AREA"
+            ],
+            "ILU_DROPTOL": 0.0001,
+            "ILU_FILLFACTOR": 10.0,
+            "ILU_FILLTOL": 0.01,
+            "ILU_MILU": "SILU",
+            "ILU_MILU_DIM": 3.0,
+            "ILU_NORM": "INF_NORM",
+            "ITERREFINE": "NOREFINE",
+            "PIVOTGROWTH": true,
+            "PRINTSTAT": true,
+            "SYMMETRICMODE": false,
+            "SYMPATTERN": false
+        },
+        "QUADRATURE": {
+            "SURFACE": [
+                1,
+                6
+            ],
+            "VOLUME": [
+                1,
+                6
+            ]
+        },
+        "SOLVER": {
+            "ABSTOL": 0.0001,
+            "MAXITER": 400,
+            "MINRESTART": 100,
+            "THREADS": "MAX",
+            "TOL": 0.0001,
+            "TYPE": "GMRES"
+        },
+        "TRANSIENT": {
+            "START": 0.0,
+            "STEP": 1e-10,
+            "STOP": 1e-08
+        }
+    },
+    "VERSION": 0.1
+}
